@@ -1,0 +1,236 @@
+2022-06-20 16:50:28,631 INFO Initialized logging
+2022-06-20 16:50:45,394 INFO cfar10(
+  (conv_block1): Sequential(
+    (0): Conv2d(3, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (5): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (6): Dropout(p=0.15, inplace=False)
+  )
+  (conv_block2): Sequential(
+    (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(128, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), dilation=(2, 2))
+    (3): ReLU()
+    (4): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (5): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (6): Dropout(p=0.15, inplace=False)
+  )
+  (DepthSepConv): depthwise_separable_conv(
+    (depthwise): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512)
+    (pointwise): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1))
+  )
+  (conv_block3): Sequential(
+    (0): depthwise_separable_conv(
+      (depthwise): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=512)
+      (pointwise): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1))
+    )
+    (1): ReLU()
+    (2): Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (5): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (6): Dropout(p=0.15, inplace=False)
+  )
+  (conv_block4): Sequential(
+    (0): Conv2d(64, 10, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  )
+  (gap): Sequential(
+    (0): AvgPool2d(kernel_size=3, stride=3, padding=0)
+  )
+)
+2022-06-20 16:50:45,395 INFO Number of parameters: 835210
+2022-06-20 16:50:45,395 INFO Epoch 1
+2022-06-20 16:51:07,510 INFO 
+Test set: Average loss: 1.2278, Accuracy: 5507/10000 (55%)
+
+2022-06-20 16:51:07,744 INFO Epoch 1 summary: {'epoch': 1, 'train_loss': tensor(1.3723, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 44.422, 'valid_loss': 1.2278325258255005, 'valid_acc': 0.5507}
+2022-06-20 16:51:07,767 INFO 
+
+2022-06-20 16:51:07,767 INFO Epoch: 1, Train Loss: 1.372, Valid Loss: 1.228
+2022-06-20 16:51:07,767 INFO Epoch 2
+2022-06-20 16:51:28,967 INFO 
+Test set: Average loss: 1.0090, Accuracy: 6375/10000 (64%)
+
+2022-06-20 16:51:28,990 INFO Epoch 2 summary: {'epoch': 2, 'train_loss': tensor(0.9570, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 60.488, 'valid_loss': 1.008962222290039, 'valid_acc': 0.6375}
+2022-06-20 16:51:28,993 INFO 
+
+2022-06-20 16:51:28,993 INFO Epoch: 2, Train Loss: 0.957, Valid Loss: 1.009
+2022-06-20 16:51:28,993 INFO Epoch 3
+2022-06-20 16:51:50,795 INFO 
+Test set: Average loss: 0.8767, Accuracy: 6853/10000 (69%)
+
+2022-06-20 16:51:50,818 INFO Epoch 3 summary: {'epoch': 3, 'train_loss': tensor(0.7417, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 67.142, 'valid_loss': 0.8767445037841797, 'valid_acc': 0.6853}
+2022-06-20 16:51:50,822 INFO 
+
+2022-06-20 16:51:50,822 INFO Epoch: 3, Train Loss: 0.742, Valid Loss: 0.877
+2022-06-20 16:51:50,822 INFO Epoch 4
+2022-06-20 16:52:12,728 INFO 
+Test set: Average loss: 0.9278, Accuracy: 6784/10000 (68%)
+
+2022-06-20 16:52:12,750 INFO Epoch 4 summary: {'epoch': 4, 'train_loss': tensor(0.9304, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 71.794, 'valid_loss': 0.9277594046592712, 'valid_acc': 0.6784}
+2022-06-20 16:52:12,754 INFO 
+
+2022-06-20 16:52:12,754 INFO Epoch: 4, Train Loss: 0.930, Valid Loss: 0.928
+2022-06-20 16:52:12,754 INFO Epoch 5
+2022-06-20 16:52:35,105 INFO 
+Test set: Average loss: 0.7641, Accuracy: 7344/10000 (73%)
+
+2022-06-20 16:52:35,127 INFO Epoch 5 summary: {'epoch': 5, 'train_loss': tensor(0.5193, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 75.296, 'valid_loss': 0.7640656351089478, 'valid_acc': 0.7344}
+2022-06-20 16:52:35,130 INFO 
+
+2022-06-20 16:52:35,130 INFO Epoch: 5, Train Loss: 0.519, Valid Loss: 0.764
+2022-06-20 16:52:35,130 INFO Epoch 6
+2022-06-20 16:52:57,947 INFO 
+Test set: Average loss: 0.7183, Accuracy: 7477/10000 (75%)
+
+2022-06-20 16:52:57,968 INFO Epoch 6 summary: {'epoch': 6, 'train_loss': tensor(0.5562, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 77.572, 'valid_loss': 0.7183206136703492, 'valid_acc': 0.7477}
+2022-06-20 16:52:57,972 INFO 
+
+2022-06-20 16:52:57,972 INFO Epoch: 6, Train Loss: 0.556, Valid Loss: 0.718
+2022-06-20 16:52:57,973 INFO Epoch 7
+2022-06-20 16:53:20,454 INFO 
+Test set: Average loss: 0.7258, Accuracy: 7473/10000 (75%)
+
+2022-06-20 16:53:20,475 INFO Epoch 7 summary: {'epoch': 7, 'train_loss': tensor(0.6371, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 79.48, 'valid_loss': 0.7258239248275756, 'valid_acc': 0.7473}
+2022-06-20 16:53:20,478 INFO 
+
+2022-06-20 16:53:20,479 INFO Epoch: 7, Train Loss: 0.637, Valid Loss: 0.726
+2022-06-20 16:53:20,479 INFO Epoch 8
+2022-06-20 16:53:42,788 INFO 
+Test set: Average loss: 0.6520, Accuracy: 7769/10000 (78%)
+
+2022-06-20 16:53:42,811 INFO Epoch 8 summary: {'epoch': 8, 'train_loss': tensor(0.5572, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 81.318, 'valid_loss': 0.6520124387741089, 'valid_acc': 0.7769}
+2022-06-20 16:53:42,814 INFO 
+
+2022-06-20 16:53:42,815 INFO Epoch: 8, Train Loss: 0.557, Valid Loss: 0.652
+2022-06-20 16:53:42,815 INFO Epoch 9
+2022-06-20 16:54:05,226 INFO 
+Test set: Average loss: 0.6217, Accuracy: 7904/10000 (79%)
+
+2022-06-20 16:54:05,251 INFO Epoch 9 summary: {'epoch': 9, 'train_loss': tensor(0.5370, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 82.876, 'valid_loss': 0.6216900952339173, 'valid_acc': 0.7904}
+2022-06-20 16:54:05,254 INFO 
+
+2022-06-20 16:54:05,254 INFO Epoch: 9, Train Loss: 0.537, Valid Loss: 0.622
+2022-06-20 16:54:05,255 INFO Epoch 10
+2022-06-20 16:54:27,775 INFO 
+Test set: Average loss: 0.6817, Accuracy: 7764/10000 (78%)
+
+2022-06-20 16:54:27,798 INFO Epoch 10 summary: {'epoch': 10, 'train_loss': tensor(0.4313, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 83.816, 'valid_loss': 0.6817154693126678, 'valid_acc': 0.7764}
+2022-06-20 16:54:27,800 INFO 
+
+2022-06-20 16:54:27,801 INFO Epoch: 10, Train Loss: 0.431, Valid Loss: 0.682
+2022-06-20 16:54:27,801 INFO Epoch 11
+2022-06-20 16:54:50,193 INFO 
+Test set: Average loss: 0.5322, Accuracy: 8198/10000 (82%)
+
+2022-06-20 16:54:50,216 INFO Epoch 11 summary: {'epoch': 11, 'train_loss': tensor(0.3988, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 86.758, 'valid_loss': 0.532241250705719, 'valid_acc': 0.8198}
+2022-06-20 16:54:50,219 INFO 
+
+2022-06-20 16:54:50,219 INFO Epoch: 11, Train Loss: 0.399, Valid Loss: 0.532
+2022-06-20 16:54:50,220 INFO Epoch 12
+2022-06-20 16:55:12,634 INFO 
+Test set: Average loss: 0.5358, Accuracy: 8196/10000 (82%)
+
+2022-06-20 16:55:12,655 INFO Epoch 12 summary: {'epoch': 12, 'train_loss': tensor(0.2817, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 87.72, 'valid_loss': 0.5358321347236633, 'valid_acc': 0.8196}
+2022-06-20 16:55:12,660 INFO 
+
+2022-06-20 16:55:12,660 INFO Epoch: 12, Train Loss: 0.282, Valid Loss: 0.536
+2022-06-20 16:55:12,660 INFO Epoch 13
+2022-06-20 16:55:35,161 INFO 
+Test set: Average loss: 0.5295, Accuracy: 8226/10000 (82%)
+
+2022-06-20 16:55:35,183 INFO Epoch 13 summary: {'epoch': 13, 'train_loss': tensor(0.5098, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 88.094, 'valid_loss': 0.5295036701202392, 'valid_acc': 0.8226}
+2022-06-20 16:55:35,187 INFO 
+
+2022-06-20 16:55:35,187 INFO Epoch: 13, Train Loss: 0.510, Valid Loss: 0.530
+2022-06-20 16:55:35,187 INFO Epoch 14
+2022-06-20 16:55:58,476 INFO 
+Test set: Average loss: 0.5252, Accuracy: 8249/10000 (82%)
+
+2022-06-20 16:55:58,500 INFO Epoch 14 summary: {'epoch': 14, 'train_loss': tensor(0.4185, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 88.812, 'valid_loss': 0.5252490225791931, 'valid_acc': 0.8249}
+2022-06-20 16:55:58,504 INFO 
+
+2022-06-20 16:55:58,504 INFO Epoch: 14, Train Loss: 0.419, Valid Loss: 0.525
+2022-06-20 16:55:58,504 INFO Epoch 15
+2022-06-20 16:56:20,960 INFO 
+Test set: Average loss: 0.5251, Accuracy: 8243/10000 (82%)
+
+2022-06-20 16:56:20,981 INFO Epoch 15 summary: {'epoch': 15, 'train_loss': tensor(0.3346, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 89.126, 'valid_loss': 0.5250569234848023, 'valid_acc': 0.8243}
+2022-06-20 16:56:20,985 INFO 
+
+2022-06-20 16:56:20,985 INFO Epoch: 15, Train Loss: 0.335, Valid Loss: 0.525
+2022-06-20 16:56:20,985 INFO Epoch 16
+2022-06-20 16:56:43,454 INFO 
+Test set: Average loss: 0.5237, Accuracy: 8242/10000 (82%)
+
+2022-06-20 16:56:43,476 INFO Epoch 16 summary: {'epoch': 16, 'train_loss': tensor(0.4687, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 88.976, 'valid_loss': 0.5237204977989197, 'valid_acc': 0.8242}
+2022-06-20 16:56:43,479 INFO 
+
+2022-06-20 16:56:43,479 INFO Epoch: 16, Train Loss: 0.469, Valid Loss: 0.524
+2022-06-20 16:56:43,479 INFO Epoch 17
+2022-06-20 16:57:06,001 INFO 
+Test set: Average loss: 0.5239, Accuracy: 8256/10000 (83%)
+
+2022-06-20 16:57:06,023 INFO Epoch 17 summary: {'epoch': 17, 'train_loss': tensor(0.3066, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 89.068, 'valid_loss': 0.5238672795295716, 'valid_acc': 0.8256}
+2022-06-20 16:57:06,026 INFO 
+
+2022-06-20 16:57:06,026 INFO Epoch: 17, Train Loss: 0.307, Valid Loss: 0.524
+2022-06-20 16:57:06,026 INFO Epoch 18
+2022-06-20 16:57:28,565 INFO 
+Test set: Average loss: 0.5230, Accuracy: 8257/10000 (83%)
+
+2022-06-20 16:57:28,587 INFO Epoch 18 summary: {'epoch': 18, 'train_loss': tensor(0.4284, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 89.376, 'valid_loss': 0.5230278253555298, 'valid_acc': 0.8257}
+2022-06-20 16:57:28,590 INFO 
+
+2022-06-20 16:57:28,590 INFO Epoch: 18, Train Loss: 0.428, Valid Loss: 0.523
+2022-06-20 16:57:28,590 INFO Epoch 19
+2022-06-20 16:57:51,100 INFO 
+Test set: Average loss: 0.5223, Accuracy: 8250/10000 (82%)
+
+2022-06-20 16:57:51,121 INFO Epoch 19 summary: {'epoch': 19, 'train_loss': tensor(0.1901, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 89.192, 'valid_loss': 0.5222932921648026, 'valid_acc': 0.825}
+2022-06-20 16:57:51,124 INFO 
+
+2022-06-20 16:57:51,124 INFO Epoch: 19, Train Loss: 0.190, Valid Loss: 0.522
+2022-06-20 16:57:51,125 INFO Epoch 20
+2022-06-20 16:58:13,652 INFO 
+Test set: Average loss: 0.5231, Accuracy: 8257/10000 (83%)
+
+2022-06-20 16:58:13,676 INFO Epoch 20 summary: {'epoch': 20, 'train_loss': tensor(0.4138, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 89.31, 'valid_loss': 0.523094502544403, 'valid_acc': 0.8257}
+2022-06-20 16:58:13,679 INFO 
+
+2022-06-20 16:58:13,679 INFO Epoch: 20, Train Loss: 0.414, Valid Loss: 0.523
+2022-06-20 16:58:13,679 INFO Epoch 21
+2022-06-20 16:58:36,197 INFO 
+Test set: Average loss: 0.5217, Accuracy: 8264/10000 (83%)
+
+2022-06-20 16:58:36,218 INFO Epoch 21 summary: {'epoch': 21, 'train_loss': tensor(0.2515, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 89.486, 'valid_loss': 0.521705044555664, 'valid_acc': 0.8264}
+2022-06-20 16:58:36,221 INFO 
+
+2022-06-20 16:58:36,222 INFO Epoch: 21, Train Loss: 0.252, Valid Loss: 0.522
+2022-06-20 16:58:36,222 INFO Epoch 22
+2022-06-20 16:58:58,716 INFO 
+Test set: Average loss: 0.5232, Accuracy: 8264/10000 (83%)
+
+2022-06-20 16:58:58,740 INFO Epoch 22 summary: {'epoch': 22, 'train_loss': tensor(0.3649, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 89.528, 'valid_loss': 0.5232054847717286, 'valid_acc': 0.8264}
+2022-06-20 16:58:58,744 INFO 
+
+2022-06-20 16:58:58,745 INFO Epoch: 22, Train Loss: 0.365, Valid Loss: 0.523
+2022-06-20 16:58:58,745 INFO Epoch 23
+2022-06-20 16:59:21,252 INFO 
+Test set: Average loss: 0.5241, Accuracy: 8270/10000 (83%)
+
+2022-06-20 16:59:21,274 INFO Epoch 23 summary: {'epoch': 23, 'train_loss': tensor(0.2716, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 89.728, 'valid_loss': 0.524060059928894, 'valid_acc': 0.827}
+2022-06-20 16:59:21,278 INFO 
+
+2022-06-20 16:59:21,278 INFO Epoch: 23, Train Loss: 0.272, Valid Loss: 0.524
+2022-06-20 16:59:21,278 INFO Epoch 24
+2022-06-20 16:59:43,739 INFO 
+Test set: Average loss: 0.5247, Accuracy: 8245/10000 (82%)
+
+2022-06-20 16:59:43,760 INFO Epoch 24 summary: {'epoch': 24, 'train_loss': tensor(0.3626, device='cuda:0', grad_fn=<NllLossBackward0>), 'train_acc': 89.72, 'valid_loss': 0.5247080313444138, 'valid_acc': 0.8245}
+2022-06-20 16:59:43,764 INFO 
+
+2022-06-20 16:59:43,764 INFO Epoch: 24, Train Loss: 0.363, Valid Loss: 0.525
