@@ -1,6 +1,4 @@
 import torch
-# from model.model import cfar10
-# from utils.utils import CFAR10
 from torchsummary import summary
 import yaml
 import logging
@@ -20,6 +18,7 @@ def parse_args():
     parser.add_argument('--resume', action='store_true',help='Resume training from last checkpoint')
     return parser.parse_args()
 
+# load config function
 def load_config(args):
     with open(args.config) as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
@@ -41,16 +40,25 @@ def main():
     get_logger(verbose=args.verbose, log_file=log_file, append=args.resume)
     logging.info('Initialized logging')
 
+    #get the GPU
     gpu = args.gpu
     batch_size = config['data']
     print(batch_size['batch_size'])
     train_data_loader, valid_data_loader, classes = get_data_loaders(batch_size['batch_size'], gpu)
 
+    # create trainer class object
     trainer = CfarTrainer()
+
+    #get epochs from config
     epochs = config.get('train', 10)
     print(epochs['n_epochs'])
+
+    # build model
     trainer.build(config, output_dir, gpu=gpu)
+
+    # traninig loop and save model
     trainer.train(train_data_loader, valid_data_loader, epochs['n_epochs'])
+
 
     print("Finished Training")
 

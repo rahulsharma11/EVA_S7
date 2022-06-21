@@ -27,12 +27,10 @@ class CfarTrainer:
         Optim = getattr(torch.optim, optimizer_config.pop('name'))
         self.optimizer = Optim(self.model.parameters(), **optimizer_config)
 
-        # metrics_config = config.get('metrics', {})
-        # self.metrics = utils.metrics.get_metrics(metrics_config)
-
+        # initialize scheduler
         self.scheduler = torch.optim.lr_scheduler.MultiStepLR(self.optimizer, milestones=[10,13], gamma=0.2)
 
-
+        # initialize logger
         self.logger.info(self.model)
         self.logger.info('Number of parameters: %i',
                              sum(p.numel() for p in self.model.parameters()))
@@ -66,8 +64,7 @@ class CfarTrainer:
             pbar.set_description(desc= f'loss={loss.item()} batch_id={batch_idx} Accuracy={100*correct/processed}')
             train_a = (100*correct/processed)
 
-            # Return summary
-            # return dict(loss=train_loss, **metrics_summary)
+            # Return training loss and accuracy
         self.scheduler.step()
         return (train_l, train_a)
 
@@ -94,7 +91,7 @@ class CfarTrainer:
             test_loss, correct, len(test_loader.dataset),
             100. * correct / len(test_loader.dataset)))
 
-            # valid_loss = sum_loss / (i + 1)
+        # valid_loss = sum_loss / (i + 1)
         self.logger.debug('Processed %i samples ', len(test_loader.sampler))
         self.logger.info('\nTest set: Average loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)\n'.format(
             test_loss, correct, len(test_loader.dataset),
@@ -104,7 +101,7 @@ class CfarTrainer:
             prev_val_acc = val_acc
             torch.save(self.model, self.output_dir+'/{}'.format('model.pth'))
 
-        # Return summary
+        # Return test loss and accuracy
         return (test_loss, val_acc)
 
     out_train_acc = {}
@@ -135,8 +132,7 @@ class CfarTrainer:
             self.logger.info('\n')
             print('Epoch: %i, Train Loss: %.3f, Valid Loss: %.3f' % (epoch, train_loss, valid_loss))
             self.logger.info('Epoch: %i, Train Loss: %.3f, Valid Loss: %.3f', epoch, train_loss, valid_loss)
-            # summary['train_loss'] = train_loss
-            # summary['valid_loss'] = valid_loss
+            
 
 
 def get_trainer(**kwargs):
